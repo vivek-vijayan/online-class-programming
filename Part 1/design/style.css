@@ -1,0 +1,52 @@
+td {
+  color: red;
+}
+
+th {
+  color: blue;
+}
+
+table {
+  border: 2px solid red;
+  padding: 40px;
+  background-color: rgb(236, 236, 236);
+}
+
+.mybutton {
+  padding: 10px;
+  border: 1px solid gray;
+  color: white;
+  background-color: rgb(1, 25, 65);
+}
+
+.myresetbutton {
+  padding: 10px;
+  border: 1px solid gray;
+  color: white;
+  background-color: rgb(222, 0, 44);
+}
+
+.anim {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 0px;
+  animation: changeshape 3s infinite;
+}
+
+@keyframes changeshape {
+  0% {
+    background-color: red;
+    border-radius: 0px;
+  }
+
+  50% {
+    background-color: green;
+    border-radius: 100px;
+  }
+
+  100% {
+    background-color: red;
+    border-radius: 0px;
+  }
+}
