@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js"></script>
+  </head>
+  <body style="background-color: white">
+    <style>
+      table {
+        background-color: rgb(1, 37, 44);
+        color: white;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+
+      th,
+      td {
+        padding: 5px;
+      }
+      th {
+        background-color: blue;
+      }
+    </style>
+
+    <button onclick="getData()">Click me to get data!!</button>
+    <br />
+
+    <h2 id="data-view"></h2>
+
+    <table id="output-table">
+      <tr>
+        <th>Username</th>
+        <th>Class</th>
+      </tr>
+    </table>
+  </body>
+</html>
