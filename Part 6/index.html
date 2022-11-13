@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async, Await, Promise</title>
+  </head>
+  <body style="background-color: white">
+    <div id="testing"></div>
+    <script>
+      function showSampleData(data) {
+        document.getElementById("testing").innerHTML = data;
+      }
+
+      let DataPromise = new Promise(function (myresolve, myreject) {
+        let data = 23;
+
+        if (data % 2 === 0) {
+          setTimeout(() => {
+            myresolve("Yes, this is a even number");
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            myreject("No, this is an odd number");
+          }, 3000);
+        }
+      });
+
+      DataPromise.then(
+        function (value) {
+          showSampleData(value);
+        },
+        function (error) {
+          showSampleData(error);
+        }
+      );
+    </script>
+  </body>
+</html>

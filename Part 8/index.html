@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: white">
+    <b>CALL</b>
+
+    <hr />
+
+    CALL:
+    <div id="call"></div>
+
+    APPLY:
+    <div id="apply"></div>
+
+
+    BIND:
+    <div id="bind"></div>
+
+    <script>
+      // CALL
+      const user = {
+        fullname: function () {
+          return this.firstname + " " + this.lastname;
+        },
+      };
+
+      const v1 = {
+        firstname: "Vivek",
+        lastname: "Vijayan",
+        class: 10,
+      };
+
+      document.getElementById("call").innerHTML = user.fullname.call(v1);
+
+      // APPLY
+
+      const user1 = {
+        fullname: function (city, salary) {
+          return this.firstname + " " + this.lastname + ", " + city + ", " + salary;
+        },
+
+      };
+
+      const v12 = {
+        firstname: "Vivek",
+        lastname: "Vijayan",
+        class: 10,
+      };
+
+      document.getElementById("apply").innerHTML = user1.fullname.apply(v1,['Bangalore' ,'1lakh']);
+
+      // BIND
+      const user2 = {
+        firstname: "Vivek",
+        lastname: "Vijayan",
+        fullname: function () {
+          return this.firstname + " " + this.lastname;
+        },
+      };
+
+      const v11 = {
+        firstname: "User1",
+        lastname: "User2",
+        class: 10,
+      };
+
+      document.getElementById("bind").innerHTML = user2.fullname.bind(v11)();
+    </script>
+  </body>
+</html>

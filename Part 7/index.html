@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async & await</title>
+  </head>
+  <body style="background-color: white">
+    <div id="testing">Loading...</div>
+    <script>
+      function showSampleData(data) {
+        document.getElementById("testing").innerHTML = data;
+      }
+
+      let newPromise = new Promise(function (resolve) {
+        setTimeout(() => {
+          resolve(13);
+        }, 5000);
+      });
+
+      async function evenorodd() {
+        var data = 2;
+        data = await newPromise;
+        if (data % 2 === 0) {
+          return "Yes, this is a even number";
+        } else {
+          return "No, this is an odd number";
+        }
+      }
+
+      evenorodd().then( (returndata) => {
+        showSampleData(returndata);
+      });
+    </script>
+  </body>
+</html>
