@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form validation</title>
+  </head>
+  <style>
+    body {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    .input-tags {
+      padding: 10px;
+      width: 500px;
+    }
+
+    input {
+      padding: 5px;
+      border: gray solid 2px;
+      border-radius: 20px;
+    }
+    .btn {
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .errormessage {
+      color: Red;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+  <body style="background-color: rgb(213, 213, 213)">
+    <h1>Hello <span id="dup-username"></span> !</h1>
+    <form action="">
+      <div class="input-tags">
+        <!-- Username size more than 10 character -->
+        <label for="username">Username: </label>
+        <input
+          type="text"
+          oninput="checkingUsername()"
+          id="username"
+          name="username"
+          placeholder="Enter the username"
+        />
+
+        <br />
+      </div>
+      <div class="errormessage">
+        <small id="username-error"></small>
+      </div>
+
+      <div class="input-tags">
+        <!-- Country code is compulsory -->
+        <label for="phone">Phone: </label>
+        <input
+          type="text"
+          oninput="checkingPhonenumber()"
+          id="phone"
+          name="Phone"
+          placeholder="+91XXXXXXXXXXX"
+        />
+      </div>
+      <div class="errormessage">
+        <small id="phonenumber-error"></small>
+      </div>
+
+      <div class="input-tags">
+        <button class="btn" id="sbutton" name="mybutton" style="color: red" type="submit">
+          Submit application
+        </button>
+      </div>
+    </form>
+
+    <script>
+      var [gc1, gc2] = [false, false];
+
+      function buttonvaidation() {
+        let sb = document.getElementsByName("mybutton");
+        if (gc1 & (gc2 === true)) {
+          sb.style.color = "green";
+        } else {
+          sb.style.color = "red";
+        }
+      }
+
+      var x = 10;
+
+      function checkingUsername() {
+        var username_data = document.getElementById("username").value;
+        document.getElementById("dup-username").innerHTML = username_data;
+        if (username_data.length < 10) {
+          document.getElementById("username-error").innerHTML =
+            "⚠️ Username must be greater than 10";
+          gc1 = false;
+        } else {
+          document.getElementById("username-error").innerHTML = "";
+          gc1 = true;
+        }
+        buttonvaidation();
+      }
+
+      function checkingPhonenumber() {
+        var phone_data = document.getElementById("phone").value;
+        checkingString = "+91";
+        let result = phone_data.includes(checkingString);
+        if (!result) {
+          document.getElementById("phonenumber-error").innerHTML =
+            "⚠️ Country code is required";
+          gc2 = false;
+        } else {
+          document.getElementById("phonenumber-error").innerHTML = "";
+
+          if (phone_data.length != 13) {
+            document.getElementById("phonenumber-error").innerHTML =
+              "Phone number should be 10 digit";
+          } else {
+            document.getElementById("phonenumber-error").innerHTML = "";
+            if (isNaN(phone_data)) {
+              document.getElementById("phonenumber-error").innerHTML =
+                "Phone number should be of 10 digit";
+            } else {
+              document.getElementById("phonenumber-error").innerHTML = "";
+              gc2 = true;
+            }
+          }
+        }
+        buttonvaidation();
+      }
+
+    </script>
+  </body>
+</html>
